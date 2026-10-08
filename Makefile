@@ -22,7 +22,7 @@ BAMBU_CONNECT_HOST_PATH ?= $(ROOT_DIR)/data/bambu-export
 .DEFAULT_GOAL := help
 
 .PHONY: help install install-app install-api dev app api \
-	start stop down restart logs build ps \
+	start stop down restart logs build ps publish \
 	build-web lint ensure-bambu-env \
 	cap-sync cap-android cap-ios cap-dev mobile
 
@@ -39,6 +39,7 @@ help:
 	@echo   make mobile    Build static + sync Capacitor
 	@echo   make cap-android  Open Android Studio
 	@echo   make cap-ios      Open Xcode
+	@echo   make publish   Free public HTTPS URL via Cloudflare \(no account\)
 	@echo
 	@echo App: $(APP_URL)
 	@echo API: $(API_URL)/api/health
@@ -101,6 +102,17 @@ build:
 
 ps:
 	$(COMPOSE) -f $(COMPOSE_FILE) ps
+
+# Quick tunnel. Needs the app running (make start or make dev).
+# Prints a trycloudflare.com URL. No Cloudflare account required.
+publish:
+	@BIN="cloudflared"; \
+	if ! command -v cloudflared >/dev/null 2>&1; then \
+	  echo "cloudflared is not installed. On macOS: brew install cloudflared"; \
+	  exit 1; \
+	fi; \
+	echo "Opening a free public URL. Leave this running."; \
+	$$BIN tunnel --url $(APP_URL) --no-autoupdate
 
 # --- Capacitor (mobile) -------------------------------------------------------
 # Defina o IP da sua máquina na LAN para o aparelho alcançar a API:

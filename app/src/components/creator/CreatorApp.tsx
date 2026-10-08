@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { ChevronDown, Download, FileArchive, Layers, Lock, Boxes, Printer, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -1396,6 +1397,9 @@ export function CreatorApp() {
           <div className="flex h-11 shrink-0 items-center justify-between gap-3 px-4 md:h-12">
             <div className="flex min-w-0 items-center gap-2">
               <Logo className="text-[15px]" />
+              <Link href="/building" className="truncate text-[12px] font-medium text-muted hover:text-foreground">
+                Tour
+              </Link>
               {activeStep ? (
                 <p className="truncate text-[11px] font-medium text-muted md:hidden">
                   {activeStep.step}/4 · {activeStep.label}

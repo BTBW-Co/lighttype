@@ -2,7 +2,7 @@
 
 Type it. Light it. Print it.
 
-Create illuminated 3D letters ready for printing. Mobile-first web + Capacitor (iOS/Android) with NFC write.
+Create illuminated 3D letters ready for printing, or open `/building` for a 3D apartment tour. Mobile-first web + Capacitor (iOS/Android) with NFC write.
 
 ## Layout
 
@@ -34,6 +34,7 @@ make dev
 | `make cap-android` | Open Android Studio |
 | `make cap-ios` | Open Xcode |
 | `make cap-dev LAN_IP=192.168.x.x` | Capacitor live-reload → Next local |
+| `make publish` | Free public HTTPS URL (Cloudflare Tunnel, no account) |
 
 ## Mobile (Capacitor)
 

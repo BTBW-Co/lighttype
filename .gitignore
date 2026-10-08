@@ -51,6 +51,9 @@ app/.env.local
 # vercel
 .vercel
 
+# local tunnel binary
+/.bin/
+
 # typescript
 *.tsbuildinfo
 app/next-env.d.ts
